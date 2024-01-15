@@ -88,7 +88,7 @@ public class OsuModule(IConfiguration config, OsuMapper mapper) : InteractionMod
                 command.Parameters.AddWithValue("discordId", user.Id);
             }
 
-            command.CommandText += "ORDER BY score_pp DESC " +
+            command.CommandText += "ORDER BY score_play_time DESC " +
                                    "LIMIT 5 ";
 
             using (var reader = command.ExecuteReader())

@@ -55,6 +55,7 @@ public class OsuMapper(IConfiguration configuration)
         var s_plus_rank_count = reader.GetInt64("stats_s_count");
         var ss_rank_count = reader.GetInt64("stats_xh_count");
         var ss_plus_rank_count = reader.GetInt64("stats_x_count");
+        var max_combo = reader.GetInt64("stats_max_combo");
 
         var stats = new List<string>
         {
@@ -62,11 +63,12 @@ public class OsuMapper(IConfiguration configuration)
             $"• **PP:** {pp}pp",
             $"• **Accuracy:** {accuracy:n2}%",
             $"• **Playcount:** {plays} ({playtime / 3600} hours)",
+            $"• **Max Combo:** x{max_combo}",
             $"<:SS:1195386023014834176> `{ss_plus_rank_count}`\t" +
             $"<:SSPlus:1195386025602715648> `{ss_rank_count}`\t" +
             $"<:S_:1195386018765996072> `{s_plus_rank_count}`\t" +
             $"<:SPlus:1195386021580382401> `{s_rank_count}`\t" +
-            $"<:A_:1195386010289324145> `{a_rank_count}`\t",
+            $"<:A_:1195386010289324145> `{a_rank_count}`\t"
         };
 
         var statsEmbed = new EmbedBuilder
@@ -78,7 +80,7 @@ public class OsuMapper(IConfiguration configuration)
                 Url = $"https://{_bancho_url}/u/{userId}"
             },
             ThumbnailUrl = $"https://a.{_bancho_url}/{userId}",
-            Description = string.Join("\r ", stats),
+            Description = string.Join("\r\n", stats),
             Color = _embedColor
         };
         return statsEmbed;
@@ -151,7 +153,7 @@ public class OsuMapper(IConfiguration configuration)
                 Url = singleUser ? $"https://{_bancho_url}/u/{primaryId}" : null
             },
             ThumbnailUrl = $"https://a.{_bancho_url}/{primaryId}",
-            Description = string.Join("\n", stats),
+            Description = string.Join("\r\n", stats),
             Color = _embedColor
         };
 
@@ -225,7 +227,7 @@ public class OsuMapper(IConfiguration configuration)
                 Url = singleUser ? $"https://{_bancho_url}/u/{primaryId}" : null
             },
             ThumbnailUrl = $"https://a.{_bancho_url}/{primaryId}",
-            Description = string.Join("\n", stats),
+            Description = string.Join("\r\n", stats),
             Color = _embedColor
         };
 
@@ -303,7 +305,7 @@ public class OsuMapper(IConfiguration configuration)
                 Url = $"https://{_bancho_url}/leaderboard/std/rscore/vn"
             },
             ThumbnailUrl = $"https://a.{_bancho_url}/{primaryId}",
-            Description = string.Join("\n", stats),
+            Description = string.Join("\r\n", stats),
             Color = _embedColor
         };
 
