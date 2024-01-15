@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VGI.Helpers.Osu;
+using VGI.Helpers.Twitter;
 using VGI.Services;
 
 using IHost host = Host.CreateDefaultBuilder(args)
@@ -22,6 +23,8 @@ using IHost host = Host.CreateDefaultBuilder(args)
         services.AddHostedService<InteractionHandlingService>();    // Add the slash command handler
         services.AddHostedService<DiscordStartupService>();         // Add the discord startup service
         services.AddSingleton<OsuMapper>();
+        services.AddSingleton<TwitterClient>();
+        services.AddSingleton<TwitterMapper>();
     })
     .Build();
 

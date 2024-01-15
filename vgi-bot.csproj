@@ -12,6 +12,7 @@
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
         <PackageReference Include="MySql.Data" Version="8.2.0" />
         <PackageReference Include="NetEscapades.Configuration.Yaml" Version="3.0.0" />
+        <PackageReference Include="OAuth.DotNetCore" Version="3.0.1" />
     </ItemGroup>
 
     <ItemGroup>
